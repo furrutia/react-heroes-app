@@ -1,7 +1,10 @@
 import React, { useContext, useMemo } from 'react'
 import { Redirect, Switch, useParams } from 'react-router'
 import { AuthContext } from '../../auth/AuthContext';
+import { heroImages } from '../../helpers/heroImages';
 import { getHeroById } from '../../selectors/getHeroById';
+// const heroImages = require.context( '../../assets/heroes', true );
+// import batman from '../../assets/heroes/dc-batman.jpg';
 
 export const HeroScreen = ({ history }) => {
 
@@ -35,7 +38,13 @@ export const HeroScreen = ({ history }) => {
                     
                                 <div className="col-4">
                     
-                                    <img src={`../assets/heroes/${ heroeId }.jpg`} alt={ superhero } className="img-thumbnail animate__animated animate__fadeInLeft"  />
+                                    <img 
+                                        // src={`../assets/heroes/${ heroeId }.jpg`} //Desde public/assets
+                                        // src= { batman } //IMPORT 
+                                        src={ heroImages(`./${ heroeId }.jpg`).default }
+                                        alt={ superhero } 
+                                        className="img-thumbnail animate__animated animate__fadeInLeft"  
+                                    />
                     
                                 </div>
                     
